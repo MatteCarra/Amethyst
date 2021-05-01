@@ -666,6 +666,10 @@ extension WindowManager: FocusTransitionTarget {
         return screens.screenManagers.first { $0.screen?.screenID() == screen.screenID() }?.lastFocusedWindow
     }
 
+    func currentFocusedWindow() -> Window? {
+        return Window.currentlyFocused()
+    }
+
     func nextWindowIDClockwise(on screen: Screen) -> Window.WindowID? {
         return screenManager(for: screen)?.nextWindowIDClockwise()
     }

@@ -210,6 +210,13 @@ class HotKeyManager<Application: ApplicationType>: NSObject {
             appDelegate?.relaunch(self)
         }
 
+        constructCommandWithCommandKey(CommandKey.minimizeWindow.rawValue) {
+            if let curr = windowManager.currentFocusedWindow() {
+                curr.minimize()
+                windowManager.focusTransitionCoordinator.moveFocusClockwise()
+            }
+        }
+
         LayoutType<Application.Window>.availableLayoutStrings().forEach { (layoutKey, _) in
             self.constructCommandWithCommandKey(UserConfiguration.constructLayoutKeyString(layoutKey)) {
                 let screenManager: ScreenManager<WindowManager<Application>>? = windowManager.focusedScreenManager()
@@ -370,6 +377,8 @@ class HotKeyManager<Application: ApplicationType>: NSObject {
         }
 
         hotKeyNameToDefaultsKey.append(["Relaunch Amethyst", CommandKey.relaunchAmethyst.rawValue])
+
+        hotKeyNameToDefaultsKey.append(["Minimize focuesed window", CommandKey.minimizeWindow.rawValue])
 
         return hotKeyNameToDefaultsKey
     }

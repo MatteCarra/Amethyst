@@ -121,6 +121,7 @@ enum CommandKey: String {
     case reevaluateWindows = "reevaluate-windows"
     case toggleFocusFollowsMouse = "toggle-focus-follows-mouse"
     case relaunchAmethyst = "relaunch-amethyst"
+    case minimizeWindow = "close-window"
 }
 
 protocol UserConfigurationDelegate: AnyObject {

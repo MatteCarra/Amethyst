@@ -109,6 +109,8 @@ protocol WindowType: Equatable {
          - spaceID: The id of the space.
      */
     func move(toSpace spaceID: CGSSpaceID)
+
+    func minimize()
 }
 
 enum WindowDecodingError: Error {
